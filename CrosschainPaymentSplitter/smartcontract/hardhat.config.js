@@ -1,5 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config({ path: ".env" });
+require("./tasks/01-deploy-split");
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
@@ -38,15 +39,15 @@ module.exports = {
 
   etherscan: {
     apiKey: {
-      "mantle-testnet": "myapikey",
+      "ethereumSepolia": process.env.API_KEY,
     },
 
     customChains: [
       {
-        network: "mantle-testnet",
-        chainId: 5001,
+        network: "ethereumSepolia",
+        chainId: 11155111,
         urls: {
-          apiURL: "https://explorer.testnet.mantle.xyz/api",
+          apiURL: "https://api-sepolia.etherscan.io/api",
           browserURL: '',
         },
 
