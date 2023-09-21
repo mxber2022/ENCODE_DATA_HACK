@@ -32,5 +32,5 @@ task("split", "split the payment among payment data added above")
     .setAction(async (taskArgs, hre) => {
         
         const split = await contract.split();
-        console.log("cross chain payment is completed, congrats :", split.hash);
+        console.log("cross chain payment is completed, congrats. Transaction Hash :", split.hash);
     });
