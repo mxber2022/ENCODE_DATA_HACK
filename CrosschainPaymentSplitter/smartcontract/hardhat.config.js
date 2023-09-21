@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config({ path: ".env" });
 require("./tasks/01-deploy-split");
 require("./tasks/02-whitelist");
+require("./tasks/03-split");
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
