@@ -93,7 +93,7 @@ contract Split is OwnerIsCreator {
     }
 
     Transaction[] public transactions;
-    address tok = 0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05;
+    address tok = 0xFd57b4ddBf88a4e07fF4e34C487b99af2Fe82a05; //CCIP BnM
 
     function addTransactions(Transaction[] memory _groupedTransactions) public onlyOwner {
         for (uint256 i = 0; i < _groupedTransactions.length; i++) {
@@ -117,6 +117,8 @@ contract Split is OwnerIsCreator {
     function transactionData() public onlyOwner {
         delete transactions;
     }
+    
+    // add functionality to add money to contract when balance falls via chainlink automate
 
 
     /* 
