@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { usePrepareContractWrite , useContractWrite, useSendTransaction, usePrepareSendTransaction} from 'wagmi';
 import { abi } from './abi';
+import { parseEther } from 'viem';
 
 const Home: NextPage = () => {
 
@@ -56,13 +57,14 @@ const Home: NextPage = () => {
     const distributedValues = formData.map((data) => [
       data.address,
       chainValues[data.chain], // Use the mapping to get the value based on the selected chain
-      data.amount,
+      //data.amount,
+      parseEther((data.amount).toString()),
     ]);
     console.log(distributedValues);
     setDistributedData(distributedValues);
   };
     
-
+  console.log(parseEther("0.2"));
   const { config, error: prepareError, isError: isPrepareError, } = usePrepareContractWrite({
     address: '0x3b5ed7c3E6725c58926F532e3e97C32EE8576ef1',
     abi: abi,
@@ -70,7 +72,7 @@ const Home: NextPage = () => {
     args: [distributedData],
     
   })
-  const { data, error, isError, write  } = useContractWrite(config);
+  const { data: mydata1, write, isSuccess: succ  } = useContractWrite(config);
 
   const { config: splits } = usePrepareContractWrite({
     address: '0x3b5ed7c3E6725c58926F532e3e97C32EE8576ef1',
@@ -112,32 +114,16 @@ const Home: NextPage = () => {
         </div>
 
         <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <SparklesIcon className="h-8 w-8 fill-secondary" />
-              <p>
-              Example Usecases
-                <Link href="/example-ui" passHref className="link">
-                  
-                </Link>{" "}
-                1. 
-              </p>
-            </div>
-          </div>
-
-
-
-
-
+      
           <div>
+
+
+
+
       <table>
         <thead>
           <tr>
-            <th>Address</th>
+            <th>Recipient Address</th>
             <th>Chain</th>
             <th>Amount</th>
           </tr>
@@ -146,15 +132,10 @@ const Home: NextPage = () => {
           {formData.map((data, index) => (
             <tr key={index}>
               <td>
-                <input
-                  type="text"
-                  name="address"
-                  value={data.address}
-                  onChange={(e) => handleChange(index, e)}
-                />
+                <input style={{ width: '400px', height: '40px' , marginRight: '10px', border:'solid black', padding: '2px'}} type="text" name="address" value={data.address} onChange={(e) => handleChange(index, e)} />
               </td>
               <td>
-                <select
+                <select style={{ width: '150px', height: '40px' , marginRight: '10px', border:'solid black'}}
                   name="chain"
                   value={data.chain}
                   onChange={(e) => handleChainChange(index, e.target.value)}
@@ -168,29 +149,38 @@ const Home: NextPage = () => {
                 </select>
               </td>
               <td>
-                <input
-                  type="text"
-                  name="amount"
-                  value={data.amount}
-                  onChange={(e) => handleChange(index, e)}
-                />
+                <input style={{ width: '150px', height: '40px' , marginRight: '10px', border:'solid black', padding: '2px'}} type="text" name="amount" value={data.amount} onChange={(e) => handleChange(index, e)} />
               </td>
             </tr>
           ))}
         </tbody>
+        
       </table>
-      <button onClick={addRow}>Add Row</button>
-      <button onClick={handleDistributeClick}>Distribute</button>
-      
+      <button className="hov" style={{ width: '100px', height: '28px' , marginRight: '10px', border:'solid black', padding: '2px'}} onClick={addRow}>Add Row</button><br/><br/><br/>
+      <button className="hov" style={{ width: '150px', height: '40px' , marginRight: '10px', border:'solid black'}} onClick={handleDistributeClick}>Confirm Data</button>
+      <button className="hov" style={{ width: '200px', height: '40px' , marginRight: '10px', border:'solid black'}} onClick={write}>Confirm on blockchain</button>
+      <button className="hov" style={{ width: '150px', height: '40px' , marginRight: '10px', border:'solid black'}} onClick={split}>Distribute</button>
     </div>
 
-    <button style={{ width: '300px', height: '40px' , marginRight: '10px'}} onClick={write}>Store on blockchain</button>
-    <button style={{ width: '300px', height: '40px' , marginRight: '10px'}} onClick={split}>Split</button>
+    <br/><br/>
+    {succ && <div>Transaction: {JSON.stringify(mydata1)}</div>}
 
     {isSuccess && <div>Transaction: {JSON.stringify(mydata)}</div>}
         </div>
       </div>
 
+
+
+
+
+
+
+
+      {distributedData.length > 0 && (
+  <div style={{ color: 'red'}}>
+    Data saved
+  </div>
+)}
     </>
   );
 };
