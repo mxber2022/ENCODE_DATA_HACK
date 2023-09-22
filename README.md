@@ -18,12 +18,12 @@ This project leverages Chainlink CCIP and Chainlink Automation to facilitate cro
 - **Secure and Decentralized**: Leverage the security and decentralization of blockchain technology for trustless operations.
 - **Scalable**: Designed for scalability, enabling you to handle a growing volume of cross-chain transactions.
 
-## Usecases
+## Real world usecase Examples
 
--
--
--
--
+- cross chain funds distribution
+- Recurring payment(cross chain) using chainlink automation
+- chainlink automation to fund gas fees and ccip BnM token to smart contract.
+
 
 ## Getting Started
 
@@ -61,3 +61,11 @@ Before you begin, ensure you have the following prerequisites:
    yarn start
    ```
 
+
+## Deployment details
+
+chain - sepolia
+Split smartcontract - 0x3b5ed7c3E6725c58926F532e3e97C32EE8576ef1
+Monitor smartcontract - 0x5f06D6D224Bfe000CbE8eB42812EE96Dac2bF7dC
+
+Token used for fund distribution - ccip BnM
