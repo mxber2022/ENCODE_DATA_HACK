@@ -38,24 +38,24 @@ export const Footer = () => {
                 rel="noreferrer"
                 className="underline underline-offset-2"
               >
-                Fork me
+              
               </a>
             </div>
-            <span>·</span>
+            <span></span>
             <div>
               <p className="m-0 text-center">
-                Built with <HeartIcon className="inline-block h-4 w-4" /> at 🏰{" "}
+              
                 <a
                   href="https://buidlguidl.com/"
                   target="_blank"
                   rel="noreferrer"
                   className="underline underline-offset-2"
                 >
-                  BuidlGuidl
+               
                 </a>
               </p>
             </div>
-            <span>·</span>
+            <span></span>
             <div className="text-center">
               <a
                 href="https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA"
@@ -63,7 +63,7 @@ export const Footer = () => {
                 rel="noreferrer"
                 className="underline underline-offset-2"
               >
-                Support
+    
               </a>
             </div>
           </div>
