@@ -67,7 +67,7 @@ Before you begin, ensure you have the following prerequisites:
 
 ## Deployment details
 
-chain - sepolia
+chain - sepolia <br>
 Split smartcontract - 0x3b5ed7c3E6725c58926F532e3e97C32EE8576ef1 <br>
 Monitor smartcontract - 0x5f06D6D224Bfe000CbE8eB42812EE96Dac2bF7dC <br>
 
