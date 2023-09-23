@@ -22,7 +22,10 @@ This project leverages Chainlink CCIP and Chainlink Automation to facilitate cro
 
 - cross chain funds distribution
 - Recurring payment(cross chain) using chainlink automation
-- chainlink automation to fund gas fees and ccip BnM token to smart contract.
+- chainlink automation to fund gas fees and ccip BnM token to smart contract. This avoids manual work.
+
+## Chainlink automation used
+- When ever CCIP BnM token balance falls below 1 on the Split contract, chainlink automation will automatically fund the split contract with CCIP BnM token with 0.1 token. You can use whatever amount you need.
 
 
 ## Getting Started
