@@ -51,7 +51,7 @@ Before you begin, ensure you have the following prerequisites:
 2. Install dependencies:
 
    ```shell
-   cd cross-chain-payment-distributor
+   cd CrosschainPaymentSplitter
    cd frontend
    yarn
    ```
